@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "configure" ]; then
+  conf=/etc/lxdm/lxdm.conf
+  src=/usr/share/svent/lxdm/lxdm.conf
+  if [ -f "$conf" ] && [ ! -f "$conf.svent-orig" ]; then
+    cp -a "$conf" "$conf.svent-orig"
+  fi
+  [ -f "$src" ] && cp -f "$src" "$conf"
+
+  dm=/usr/sbin/lxdm
+  if [ -x "$dm" ]; then
+    echo "$dm" > /etc/X11/default-display-manager
+    for unit in /lib/systemd/system/lxdm.service /usr/lib/systemd/system/lxdm.service; do
+      if [ -e "$unit" ]; then
+        ln -sf "$unit" /etc/systemd/system/display-manager.service
+        break
+      fi
+    done
+    if command -v debconf-communicate >/dev/null 2>&1; then
+      echo "set shared/default-x-display-manager lxdm" | debconf-communicate >/dev/null 2>&1 || true
+    fi
+  fi
+fi
+
+#DEBHELPER#

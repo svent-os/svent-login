@@ -1,0 +1,75 @@
+@define-color svent_red #e0564a;
+
+window, .background {
+  background-color: transparent;
+  background-image: none;
+  color: @svent_red;
+}
+
+* {
+  color: @svent_red;
+}
+
+label {
+  color: @svent_red;
+  text-shadow: none;
+}
+
+entry {
+  color: @svent_red;
+  caret-color: @svent_red;
+  background-color: #0d0d0d;
+  background-image: none;
+  border: 1px solid @svent_red;
+  border-radius: 0;
+  padding: 6px 8px;
+}
+entry:focus {
+  border-color: #ff6b5e;
+}
+
+button {
+  color: @svent_red;
+  background-color: #000000;
+  background-image: none;
+  border: 1px solid @svent_red;
+  border-radius: 0;
+  text-shadow: none;
+  padding: 4px 12px;
+}
+button:hover {
+  background-color: #1a0a08;
+}
+
+combobox, combobox button, combobox entry {
+  color: @svent_red;
+  background-color: #0d0d0d;
+  background-image: none;
+}
+
+iconview, iconview.view {
+  color: @svent_red;
+  background-color: transparent;
+}
+iconview:selected,
+iconview.view:selected {
+  color: #ffffff;
+  background-color: @svent_red;
+}
+
+/* Session/language dropdown popups: black with red text, red selection */
+window.popup, window.popup.background,
+menu, menu.background,
+popover, popover.background,
+treeview, treeview.view, .view, cell, list, row {
+  background-color: #000000;
+  background-image: none;
+  color: @svent_red;
+}
+window.popup *:selected, window.popup *:hover,
+menuitem:hover, menuitem:selected,
+treeview:selected, treeview.view:selected, .view:selected,
+row:selected, *:selected {
+  background-color: @svent_red;
+  color: #ffffff;
+}

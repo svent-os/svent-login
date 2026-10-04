@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+"""Stage the Svent OS LXDM greeter background.
+
+Uses exports/login-background.png when the owner has provided one, otherwise
+writes a solid black placeholder at wallpaper resolution.
+"""
+
+import argparse
+import os
+import shutil
+
+from PIL import Image
+
+
+def main():
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=os.path.join(here, "assets", "background.png"))
+    ap.add_argument("--width", type=int, default=5120)
+    ap.add_argument("--height", type=int, default=2880)
+    a = ap.parse_args()
+    os.makedirs(os.path.dirname(a.out), exist_ok=True)
+    src = os.path.join(here, "exports", "login-background.png")
+    if os.path.exists(src):
+        shutil.copyfile(src, a.out)
+        print("used export", src)
+    else:
+        Image.new("RGB", (a.width, a.height), (0, 0, 0)).save(a.out, "PNG")
+        print("wrote placeholder", a.out)
+
+
+if __name__ == "__main__":
+    main()

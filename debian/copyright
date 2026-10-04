@@ -1,0 +1,14 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: svent-login
+
+Files: *
+Copyright: 2026 z1rov <fabian@zirov.net>
+License: GPL-3.0-or-later
+ On Debian systems the full license text is in
+ /usr/share/common-licenses/GPL-3.
+
+Files: themes/svent/greeter.ui
+Copyright: 2009-2014 LXDM authors
+License: GPL-3.0-or-later
+ Greeter UI adapted from the LXDM Industrial theme. The full license text
+ is in /usr/share/common-licenses/GPL-3.

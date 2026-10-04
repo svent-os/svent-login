@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_build:
+	python3 bin/gen-background
+
+override_dh_auto_clean:
+	rm -f assets/background.png

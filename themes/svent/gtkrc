@@ -1,0 +1,42 @@
+style "default" {
+  fg[NORMAL]      = "#e0564a"
+  fg[ACTIVE]      = "#e0564a"
+  fg[PRELIGHT]    = "#ff6b5e"
+  fg[SELECTED]    = "#ffffff"
+  fg[INSENSITIVE] = "#7a2f29"
+  text[NORMAL]    = "#e0564a"
+  text[ACTIVE]    = "#e0564a"
+  text[SELECTED]  = "#ffffff"
+  base[NORMAL]    = "#0d0d0d"
+  base[ACTIVE]    = "#161616"
+  base[SELECTED]  = "#e0564a"
+  bg[NORMAL]      = "#000000"
+  bg[ACTIVE]      = "#000000"
+  bg[PRELIGHT]    = "#1a0a08"
+  bg[SELECTED]    = "#e0564a"
+  font_name       = "Sans 11"
+}
+class "*" style : highest "default"
+
+# Clock, top right
+style "time" {
+  fg[NORMAL] = "#e0564a"
+  font_name  = "Sans 12"
+}
+
+# User prompt label
+style "prompt" {
+  fg[NORMAL] = "#e0564a"
+  font_name  = "Sans Bold 14"
+}
+
+# Bottom pane with session, language and keyboard controls
+style "bottom" {
+  fg[NORMAL] = "#e0564a"
+  font_name  = "Sans 12"
+}
+
+widget "lxdm.*.time" style : highest "time"
+widget "*.prompt" style : highest "prompt"
+widget "lxdm.*.bottom_pane" style : highest "bottom"
+widget_class "GtkWindow.*.GtkEventBox.*.<GtkLabel>" style : highest "bottom"
