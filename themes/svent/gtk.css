@@ -54,7 +54,7 @@ combobox window.popup treeview:selected,
 combobox window.popup row:selected,
 combobox window.popup *:selected {
   color: #ffffff;
-  background-color: @svent_red;
+  background-color: #3a3a3a;
 }
 
 iconview, iconview.view {
@@ -80,6 +80,6 @@ window.popup *:selected, window.popup *:hover,
 menuitem:hover, menuitem:selected,
 treeview:selected, treeview.view:selected, .view:selected,
 row:selected, *:selected {
-  background-color: @svent_red;
+  background-color: #3a3a3a;
   color: #ffffff;
 }
