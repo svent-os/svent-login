@@ -41,10 +41,20 @@ button:hover {
   background-color: #1a0a08;
 }
 
-combobox, combobox button, combobox entry {
+
+/* Session/language combo dropdown: selected row must show white text on red */
+combobox window.popup,
+combobox window.popup treeview,
+combobox window.popup cell {
   color: @svent_red;
-  background-color: #0d0d0d;
-  background-image: none;
+  background-color: #000000;
+}
+combobox window.popup cell:selected,
+combobox window.popup treeview:selected,
+combobox window.popup row:selected,
+combobox window.popup *:selected {
+  color: #ffffff;
+  background-color: @svent_red;
 }
 
 iconview, iconview.view {
