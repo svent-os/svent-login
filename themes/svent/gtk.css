@@ -4,6 +4,7 @@ window, .background, #lxdm {
   color: #d7dee7;
   font: 11pt Sans;
 }
+* { outline-style: none; outline-width: 0; outline-color: transparent; }
 label { color: #d7dee7; text-shadow: none; }
 #lxdm {
   background-image: url("/usr/share/svent/login/background.png");
@@ -26,6 +27,11 @@ entry, button {
 }
 #login_entry { font-size: 13pt; border: 2px solid #ff6266; padding: 8px 10px; }
 entry:focus, button:focus { border-color: #ff6266; box-shadow: none; }
+entry selection { background-color: #943c40; color: #ffffff; }
+combobox button:hover, combobox button:focus, combobox button:checked {
+  border-color: #ff6266;
+  box-shadow: none;
+}
 button:hover { background-color: #302427; border-color: #ff6266; }
 combobox entry { font-size: 10pt; min-width: 30px; }
 combobox button { padding: 7px; }

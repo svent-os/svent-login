@@ -1,4 +1,6 @@
 style "default" {
+  GtkWidget::focus-line-width = 0
+  GtkWidget::focus-padding = 0
   fg[NORMAL] = "#d7dee7"
   fg[ACTIVE] = "#d7dee7"
   fg[PRELIGHT] = "#ffffff"

@@ -1,3 +1,10 @@
+svent-login (0.2.2) unstable; urgency=medium
+
+  * Center the GTK3 login form independently of the bottom controls.
+  * Replace inherited blue focus outlines and selections with coral styling.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 02:00:00 -0500
+
 svent-login (0.2.1) unstable; urgency=medium
 
   * Remove unsupported text_column properties from GTK3 combo boxes.
