@@ -50,6 +50,7 @@ class LoginTests(unittest.TestCase):
                 self.assertIn(identifier, objects)
             self.assertEqual(objects['alignment1'].find("property[@name='yscale']").text, '0')
         self.assertNotIn('GtkComboBoxEntry', (ROOT/'themes/svent/greeter-gtk3.ui').read_text())
+        self.assertNotIn('text_column', (ROOT/'themes/svent/greeter-gtk3.ui').read_text())
 
     def test_missing_background_is_rejected(self):
         module = load('gen-background')

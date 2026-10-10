@@ -1,3 +1,9 @@
+svent-login (0.2.1) unstable; urgency=medium
+
+  * Remove unsupported text_column properties from GTK3 combo boxes.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 01:30:00 -0500
+
 svent-login (0.2.0) unstable; urgency=medium
 
   * Add the reserved island login background and centered minimal greeter.

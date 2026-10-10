@@ -133,7 +133,6 @@
                     <child>
                       <object class="GtkComboBoxText" id="sessions">
                         <property name="visible">True</property>
-                        <property name="text_column">0</property>
                         <property name="name">sessions</property>
                         <property name="has_entry">True</property>
                       </object>
@@ -174,7 +173,6 @@
                     <child>
                       <object class="GtkComboBoxText" id="lang">
                         <property name="visible">True</property>
-                        <property name="text_column">0</property>
                         <property name="name">lang</property>
                         <property name="has_entry">True</property>
                       </object>
@@ -201,7 +199,6 @@
                 </child>
                 <child>
                   <object class="GtkComboBoxText" id="keyboard">
-                    <property name="text_column">0</property>
                     <property name="visible">True</property>
                     <property name="name">keyboard</property>
                     <property name="has_entry">True</property>
