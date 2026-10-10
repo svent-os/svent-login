@@ -1,42 +1,32 @@
 style "default" {
-  fg[NORMAL]      = "#e0564a"
-  fg[ACTIVE]      = "#e0564a"
-  fg[PRELIGHT]    = "#ff6b5e"
-  fg[SELECTED]    = "#ffffff"
-  fg[INSENSITIVE] = "#7a2f29"
-  text[NORMAL]    = "#e0564a"
-  text[ACTIVE]    = "#e0564a"
-  text[SELECTED]  = "#ffffff"
-  base[NORMAL]    = "#0d0d0d"
-  base[ACTIVE]    = "#161616"
-  base[SELECTED]  = "#e0564a"
-  bg[NORMAL]      = "#000000"
-  bg[ACTIVE]      = "#000000"
-  bg[PRELIGHT]    = "#1a0a08"
-  bg[SELECTED]    = "#e0564a"
-  font_name       = "Sans 11"
+  fg[NORMAL] = "#d7dee7"
+  fg[ACTIVE] = "#d7dee7"
+  fg[PRELIGHT] = "#ffffff"
+  fg[SELECTED] = "#ffffff"
+  fg[INSENSITIVE] = "#7e8995"
+  text[NORMAL] = "#e5e9ef"
+  text[ACTIVE] = "#e5e9ef"
+  text[SELECTED] = "#ffffff"
+  base[NORMAL] = "#191d22"
+  base[ACTIVE] = "#242a2e"
+  base[SELECTED] = "#943c40"
+  bg[NORMAL] = "#343b43"
+  bg[ACTIVE] = "#242a2e"
+  bg[PRELIGHT] = "#302427"
+  bg[SELECTED] = "#943c40"
+  font_name = "Sans 11"
 }
 class "*" style : highest "default"
-
-# Clock, top right
-style "time" {
-  fg[NORMAL] = "#e0564a"
-  font_name  = "Sans 12"
+style "entry" {
+  xthickness = 2
+  ythickness = 8
+  bg[NORMAL] = "#ff6266"
+  bg[ACTIVE] = "#ff6266"
+  font_name = "Sans 13"
 }
-
-# User prompt label
-style "prompt" {
-  fg[NORMAL] = "#e0564a"
-  font_name  = "Sans Bold 14"
+style "footer" {
+  fg[NORMAL] = "#b3bdc7"
+  font_name = "Sans 10"
 }
-
-# Bottom pane with session, language and keyboard controls
-style "bottom" {
-  fg[NORMAL] = "#e0564a"
-  font_name  = "Sans 12"
-}
-
-widget "lxdm.*.time" style : highest "time"
-widget "*.prompt" style : highest "prompt"
-widget "lxdm.*.bottom_pane" style : highest "bottom"
-widget_class "GtkWindow.*.GtkEventBox.*.<GtkLabel>" style : highest "bottom"
+widget "*.login_entry" style : highest "entry"
+widget "*.bottom_pane.*" style : highest "footer"

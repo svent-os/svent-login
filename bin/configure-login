@@ -1,0 +1,82 @@
+#!/usr/bin/python3
+import argparse
+import configparser
+import json
+from pathlib import Path
+
+def write(path, text):
+    if path.is_symlink():
+        path = path.resolve()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".svent-tmp")
+    temporary.write_text(text, encoding="utf-8")
+    temporary.replace(path)
+
+def configure(root, restore=False):
+    root = Path(root)
+    state = root / "var/lib/svent-login/state.json"
+    conf = root / "etc/lxdm/lxdm.conf"
+    dm = root / "etc/X11/default-display-manager"
+    link = root / "etc/systemd/system/display-manager.service"
+    if restore:
+        if not state.is_file():
+            return
+        saved = json.loads(state.read_text())
+        for path, key in ((conf, "conf"), (dm, "dm")):
+            if path.exists() and path.read_text() == saved.get("applied_" + key):
+                if saved[key] is None:
+                    path.unlink()
+                else:
+                    write(path, saved[key])
+        if link.is_symlink() and str(link.readlink()) == saved.get("applied_link"):
+            link.unlink()
+            if saved["link"]:
+                link.symlink_to(saved["link"])
+        state.unlink()
+        return
+    if state.is_file():
+        saved = json.loads(state.read_text())
+        activate = not dm.exists() or dm.read_text() == saved.get("applied_dm")
+    else:
+        activate = True
+        saved = {"conf": conf.read_text() if conf.exists() else None,
+                 "dm": dm.read_text() if dm.exists() else None,
+                 "link": str(link.readlink()) if link.is_symlink() else None}
+        write(state, json.dumps(saved))
+    config = configparser.ConfigParser(interpolation=None, strict=False)
+    if conf.exists():
+        config.read(conf)
+    defaults = configparser.ConfigParser(interpolation=None)
+    defaults.read(root / "usr/share/svent/lxdm/lxdm.conf")
+    for section in defaults.sections():
+        if not config.has_section(section):
+            config.add_section(section)
+        for key, value in defaults.items(section):
+            config.set(section, key, value)
+    import io
+    output = io.StringIO()
+    config.write(output)
+    saved["applied_conf"] = output.getvalue()
+    saved["applied_dm"] = "/usr/sbin/lxdm\n"
+    unit = next((name for name in ("/usr/lib/systemd/system/lxdm.service", "/lib/systemd/system/lxdm.service")
+                 if (root / name.lstrip("/")).exists()), None)
+    saved["applied_link"] = unit
+    write(state, json.dumps(saved, indent=2) + "\n")
+    write(conf, saved["applied_conf"])
+    if activate:
+        write(dm, saved["applied_dm"])
+    if activate and unit and (not link.exists() or link.is_symlink()):
+        link.parent.mkdir(parents=True, exist_ok=True)
+        if link.is_symlink():
+            link.unlink()
+        link.symlink_to(unit)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, default=Path("/"))
+    parser.add_argument("--restore", action="store_true")
+    args = parser.parse_args()
+    configure(args.root, args.restore)
+
+if __name__ == "__main__":
+    main()

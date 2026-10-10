@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+from pathlib import Path
+import gi
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+root = Path(__file__).resolve().parent.parent
+Gtk.init([])
+provider = Gtk.CssProvider()
+css = (root / "themes/svent/gtk.css").read_text()
+css = css.replace("/usr/share/svent/login/background.png", (root / "assets/background.png").as_posix())
+provider.load_from_data(css.encode())
+builder = Gtk.Builder()
+builder.add_from_file(str(root / "themes/svent/greeter-gtk3.ui"))
+for name in ("lxdm", "prompt", "login_entry", "user_list", "sessions", "lang", "keyboard", "exit", "time", "bottom_pane"):
+    if builder.get_object(name) is None:
+        raise ValueError("Missing LXDM widget: " + name)
+print("Validated GTK3 greeter and stylesheet")

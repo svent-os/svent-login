@@ -1,20 +1,6 @@
 #!/bin/sh
 set -e
-
-if [ "$1" = "purge" ] && [ -f /etc/lxdm/lxdm.conf.svent-orig ]; then
-  mv -f /etc/lxdm/lxdm.conf.svent-orig /etc/lxdm/lxdm.conf || true
+if [ "$1" = "purge" ]; then
+  rmdir /var/lib/svent-login 2>/dev/null || true
 fi
-
-if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
-  if [ -x /usr/sbin/gdm3 ]; then
-    echo /usr/sbin/gdm3 > /etc/X11/default-display-manager
-    for unit in /lib/systemd/system/gdm3.service /usr/lib/systemd/system/gdm3.service; do
-      if [ -e "$unit" ]; then
-        ln -sf "$unit" /etc/systemd/system/display-manager.service
-        break
-      fi
-    done
-  fi
-fi
-
 #DEBHELPER#

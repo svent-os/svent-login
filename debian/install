@@ -1,5 +1,7 @@
 lxdm/lxdm.conf usr/share/svent/lxdm/
 assets/background.png usr/share/svent/login/
 themes/svent/greeter.ui usr/share/lxdm/themes/svent/
+themes/svent/greeter-gtk3.ui usr/share/lxdm/themes/svent/
+bin/configure-login usr/libexec/svent/
 themes/svent/gtkrc usr/share/lxdm/themes/svent/
 themes/svent/gtk.css usr/share/lxdm/themes/svent/

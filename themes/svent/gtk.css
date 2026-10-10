@@ -1,85 +1,38 @@
-@define-color svent_red #e0564a;
-
-window, .background {
+window, .background, #lxdm {
   background-color: transparent;
   background-image: none;
-  color: @svent_red;
+  color: #d7dee7;
+  font: 11pt Sans;
 }
-
-* {
-  color: @svent_red;
+label { color: #d7dee7; text-shadow: none; }
+#lxdm {
+  background-image: url("/usr/share/svent/login/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-label {
-  color: @svent_red;
-  text-shadow: none;
-}
-
-entry {
-  color: @svent_red;
-  caret-color: @svent_red;
-  background-color: #0d0d0d;
+#prompt { font-size: 13pt; }
+#bottom_pane, #bottom_pane box { background-color: transparent; }
+#bottom_pane label { color: #b3bdc7; font-size: 10pt; }
+entry, button {
+  color: #e5e9ef;
+  background-color: #191d22;
   background-image: none;
-  border: 1px solid @svent_red;
+  border: 1px solid #515c67;
   border-radius: 0;
-  padding: 6px 8px;
-}
-entry:focus {
-  border-color: #ff6b5e;
-}
-
-button {
-  color: @svent_red;
-  background-color: #000000;
-  background-image: none;
-  border: 1px solid @svent_red;
-  border-radius: 0;
+  box-shadow: none;
   text-shadow: none;
-  padding: 4px 12px;
+  padding: 7px 10px;
 }
-button:hover {
-  background-color: #1a0a08;
-}
-
-
-/* Session/language combo dropdown: selected row must show white text on red */
-combobox window.popup,
-combobox window.popup treeview,
-combobox window.popup cell {
-  color: @svent_red;
-  background-color: #000000;
-}
-combobox window.popup cell:selected,
-combobox window.popup treeview:selected,
-combobox window.popup row:selected,
-combobox window.popup *:selected {
-  color: #ffffff;
-  background-color: #3a3a3a;
-}
-
-iconview, iconview.view {
-  color: @svent_red;
-  background-color: transparent;
-}
-iconview:selected,
-iconview.view:selected {
-  color: #ffffff;
-  background-color: @svent_red;
-}
-
-/* Session/language dropdown popups: black with red text, red selection */
-window.popup, window.popup.background,
-menu, menu.background,
-popover, popover.background,
-treeview, treeview.view, .view, cell, list, row {
-  background-color: #000000;
-  background-image: none;
-  color: @svent_red;
-}
-window.popup *:selected, window.popup *:hover,
-menuitem:hover, menuitem:selected,
-treeview:selected, treeview.view:selected, .view:selected,
-row:selected, *:selected {
-  background-color: #3a3a3a;
+#login_entry { font-size: 13pt; border: 2px solid #ff6266; padding: 8px 10px; }
+entry:focus, button:focus { border-color: #ff6266; box-shadow: none; }
+button:hover { background-color: #302427; border-color: #ff6266; }
+combobox entry { font-size: 10pt; min-width: 30px; }
+combobox button { padding: 7px; }
+combobox arrow { color: #ff6266; }
+menu, window.popup, treeview, .view { background-color: #191d22; color: #d7dee7; }
+menuitem:hover, menuitem:selected, treeview:selected, row:selected, .view:selected {
+  background-color: #943c40;
   color: #ffffff;
 }
+#exit { padding: 7px 14px; }

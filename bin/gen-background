@@ -1,33 +1,24 @@
 #!/usr/bin/python3
-"""Stage the Svent OS LXDM greeter background.
-
-Uses exports/login-background.png when the owner has provided one, otherwise
-writes a solid black placeholder at wallpaper resolution.
-"""
-
 import argparse
-import os
-import shutil
-
+from pathlib import Path
 from PIL import Image
 
+def stage(source, output):
+    with Image.open(source) as image:
+        image.load()
+        if image.format != "PNG" or image.size != (5120, 2880):
+            raise ValueError("The login background must be a 5120x2880 PNG")
+        output.parent.mkdir(parents=True, exist_ok=True)
+        temporary = output.with_suffix(".tmp")
+        image.convert("RGB").save(temporary, format="PNG", compress_level=6)
+        temporary.replace(output)
 
 def main():
-    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=os.path.join(here, "assets", "background.png"))
-    ap.add_argument("--width", type=int, default=5120)
-    ap.add_argument("--height", type=int, default=2880)
-    a = ap.parse_args()
-    os.makedirs(os.path.dirname(a.out), exist_ok=True)
-    src = os.path.join(here, "exports", "login-background.png")
-    if os.path.exists(src):
-        shutil.copyfile(src, a.out)
-        print("used export", src)
-    else:
-        Image.new("RGB", (a.width, a.height), (0, 0, 0)).save(a.out, "PNG")
-        print("wrote placeholder", a.out)
-
+    root = Path(__file__).resolve().parent.parent
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=root / "assets/background.png")
+    args = parser.parse_args()
+    stage(root / "exports/login-background.png", args.out)
 
 if __name__ == "__main__":
     main()

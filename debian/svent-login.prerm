@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
+  if [ -r /usr/libexec/svent/configure-login ]; then
+    python3 /usr/libexec/svent/configure-login --restore
+  fi
+fi
+#DEBHELPER#

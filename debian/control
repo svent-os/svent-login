@@ -2,15 +2,16 @@ Source: svent-login
 Section: x11
 Priority: optional
 Maintainer: z1rov <fabian@zirov.net>
-Build-Depends: debhelper-compat (= 13), python3, python3-pil
+Build-Depends: debhelper-compat (= 13), python3, python3-pil, python3-gi, gir1.2-gtk-3.0, xvfb, xauth
 Standards-Version: 4.7.0
 Rules-Requires-Root: no
 
 Package: svent-login
 Architecture: all
-Depends: lxdm, ${misc:Depends}
+Depends: lxdm, python3, ${misc:Depends}
 Recommends: xfonts-terminus
-Description: Svent OS login manager configuration (LXDM)
- Minimal LXDM configuration for Svent OS: a dark greeter theme, a branded
- background, and the Svent session entries. No web greeter, just LXDM.
- Installing it makes LXDM the active display manager in place of GDM.
+Description: SventOS login manager configuration (LXDM)
+ Minimal LXDM configuration with a dark island background, a centered login
+ entry and desktop, language and keyboard controls. Installed desktop sessions
+ remain available through LXDM. Installing this package selects LXDM without
+ restarting the running display manager.

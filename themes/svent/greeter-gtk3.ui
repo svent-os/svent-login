@@ -131,10 +131,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxEntry" id="sessions">
+                      <object class="GtkComboBoxText" id="sessions">
                         <property name="visible">True</property>
                         <property name="text_column">0</property>
                         <property name="name">sessions</property>
+                        <property name="has_entry">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -171,10 +172,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxEntry" id="lang">
+                      <object class="GtkComboBoxText" id="lang">
                         <property name="visible">True</property>
                         <property name="text_column">0</property>
                         <property name="name">lang</property>
+                        <property name="has_entry">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -198,10 +200,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBoxEntry" id="keyboard">
+                  <object class="GtkComboBoxText" id="keyboard">
                     <property name="text_column">0</property>
                     <property name="visible">True</property>
                     <property name="name">keyboard</property>
+                    <property name="has_entry">True</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
