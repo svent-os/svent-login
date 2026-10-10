@@ -33,14 +33,30 @@ combobox button:hover, combobox button:focus, combobox button:checked {
   box-shadow: none;
 }
 button:hover { background-color: #302427; border-color: #ff6266; }
+combobox entry,
+combobox entry:hover,
+combobox entry:focus,
+combobox button,
+combobox button:hover,
+combobox button:focus,
+combobox button:checked {
+  outline: none;
+  box-shadow: none;
+  background-image: none;
+  border-color: #515c67;
+  transition: none;
+}
 combobox entry { font-size: 10pt; min-width: 30px; }
-combobox button { padding: 7px; }
+combobox button { padding: 7px 8px; min-width: 16px; }
+combobox button box { margin: 0; padding: 0; }
 combobox arrow {
   color: #ff6266;
-  min-width: 12px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 16px;
   margin: 0;
   padding: 0;
+  -gtk-icon-shadow: none;
+  -gtk-icon-transform: none;
 }
 menu, window.popup, treeview, .view { background-color: #191d22; color: #d7dee7; }
 menuitem:hover, menuitem:selected, treeview:selected, row:selected, .view:selected {

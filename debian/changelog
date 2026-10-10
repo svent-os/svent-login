@@ -1,3 +1,9 @@
+svent-login (0.2.5) unstable; urgency=medium
+
+  * Remove inherited combo-box focus effects and balance arrow button padding.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 02:45:00 -0500
+
 svent-login (0.2.4) unstable; urgency=medium
 
   * Restore the working two-child LXDM layout without overlays or size groups.
