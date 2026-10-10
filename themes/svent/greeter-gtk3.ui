@@ -2,10 +2,19 @@
 <interface>
   <object class="GtkWindow" id="lxdm">
     <property name="decorated">False</property>
-    <property name="name">lxdm</property>
     <child>
-      <object class="GtkOverlay" id="login_overlay">
+      <object class="GtkVBox" id="vbox1">
+        <child>
+          <object class="GtkVBox" id="top_spacer">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkAlignment" id="alignment1">
             <property name="visible">True</property>
@@ -91,8 +100,13 @@
             <property name="xalign">0.5</property>
             <property name="yalign">0.5</property>
           </object>
+          <packing>
+            <property name="position">1</property>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+          </packing>
         </child>
-        <child type="overlay">
+        <child>
           <object class="GtkEventBox" id="bottom_pane">
             <property name="visible">True</property>
             <property name="app_paintable">True</property>
@@ -233,11 +247,21 @@
               </object>
             </child>
             <property name="name">bottom_pane</property>
-            <property name="halign">fill</property>
-            <property name="valign">end</property>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">2</property>
+          </packing>
         </child>
       </object>
     </child>
+    <property name="name">lxdm</property>
+  </object>
+  <object class="GtkSizeGroup" id="vertical_balance">
+    <property name="mode">vertical</property>
+    <widgets>
+      <widget name="top_spacer" />
+      <widget name="bottom_pane" />
+    </widgets>
   </object>
 </interface>

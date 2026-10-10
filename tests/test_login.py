@@ -51,10 +51,12 @@ class LoginTests(unittest.TestCase):
             self.assertEqual(objects['alignment1'].find("property[@name='yscale']").text, '0')
         self.assertNotIn('GtkComboBoxEntry', (ROOT/'themes/svent/greeter-gtk3.ui').read_text())
         self.assertNotIn('text_column', (ROOT/'themes/svent/greeter-gtk3.ui').read_text())
-        overlay = ET.parse(ROOT/'themes/svent/greeter-gtk3.ui').find(".//object[@id='login_overlay']")
-        self.assertEqual(overlay.get('class'), 'GtkOverlay')
-        self.assertIsNotNone(overlay.find("child/object[@id='alignment1']"))
-        self.assertIsNotNone(overlay.find("child[@type='overlay']/object[@id='bottom_pane']"))
+        interface = ET.parse(ROOT/'themes/svent/greeter-gtk3.ui')
+        self.assertIsNone(interface.find(".//object[@class='GtkOverlay']"))
+        identifiers = [node.get('id') for node in interface.iter('object')]
+        self.assertEqual(len(identifiers), len(set(identifiers)))
+        group = interface.find("object[@id='vertical_balance']")
+        self.assertEqual({node.get('name') for node in group.findall('widgets/widget')}, {'top_spacer', 'bottom_pane'})
 
     def test_missing_background_is_rejected(self):
         module = load('gen-background')

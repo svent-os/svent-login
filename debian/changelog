@@ -1,3 +1,10 @@
+svent-login (0.2.3) unstable; urgency=medium
+
+  * Restore the LXDM box layout and balance footer height with a size group.
+  * Validate allocated login and footer geometry during the GTK3 build check.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 02:15:00 -0500
+
 svent-login (0.2.2) unstable; urgency=medium
 
   * Center the GTK3 login form independently of the bottom controls.
