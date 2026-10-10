@@ -55,8 +55,9 @@ class LoginTests(unittest.TestCase):
         self.assertIsNone(interface.find(".//object[@class='GtkOverlay']"))
         identifiers = [node.get('id') for node in interface.iter('object')]
         self.assertEqual(len(identifiers), len(set(identifiers)))
-        group = interface.find("object[@id='vertical_balance']")
-        self.assertEqual({node.get('name') for node in group.findall('widgets/widget')}, {'top_spacer', 'bottom_pane'})
+        self.assertIsNone(interface.find(".//object[@class='GtkSizeGroup']"))
+        vbox = interface.find(".//object[@id='vbox1']")
+        self.assertEqual([node.get('id') for node in vbox.findall('child/object')], ['alignment1', 'bottom_pane'])
 
     def test_missing_background_is_rejected(self):
         module = load('gen-background')

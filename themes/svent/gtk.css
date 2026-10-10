@@ -35,7 +35,13 @@ combobox button:hover, combobox button:focus, combobox button:checked {
 button:hover { background-color: #302427; border-color: #ff6266; }
 combobox entry { font-size: 10pt; min-width: 30px; }
 combobox button { padding: 7px; }
-combobox arrow { color: #ff6266; }
+combobox arrow {
+  color: #ff6266;
+  min-width: 12px;
+  min-height: 12px;
+  margin: 0;
+  padding: 0;
+}
 menu, window.popup, treeview, .view { background-color: #191d22; color: #d7dee7; }
 menuitem:hover, menuitem:selected, treeview:selected, row:selected, .view:selected {
   background-color: #943c40;

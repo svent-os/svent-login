@@ -1,3 +1,10 @@
+svent-login (0.2.4) unstable; urgency=medium
+
+  * Restore the working two-child LXDM layout without overlays or size groups.
+  * Limit arrow centering and coral focus changes to stylesheet rules.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 02:30:00 -0500
+
 svent-login (0.2.3) unstable; urgency=medium
 
   * Restore the LXDM box layout and balance footer height with a size group.

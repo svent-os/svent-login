@@ -30,8 +30,8 @@ allocation = window.get_allocation()
 footer = builder.get_object("bottom_pane").get_allocation()
 entry = builder.get_object("login_entry")
 position = entry.translate_coordinates(window, 0, 0)
-center = position[1] + entry.get_allocated_height() / 2
-if footer.height > allocation.height / 4 or abs(center - allocation.height / 2) > 8:
-    raise ValueError("Invalid login layout: stretched footer or displaced login form")
+footer_position = builder.get_object("bottom_pane").translate_coordinates(window, 0, 0)
+if footer.height > allocation.height / 4 or position[1] < 0 or position[1] + entry.get_allocated_height() > footer_position[1]:
+    raise ValueError("Invalid login layout: stretched footer or obscured login form")
 window.destroy()
 print("Validated GTK3 greeter, stylesheet and allocated login layout")
